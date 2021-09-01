@@ -1,3 +1,4 @@
+Table of contents
 
 - [Setting up Microbit Programming Environment](#setting-up-microbit-programming-environment)
   - [Before you start](#before-you-start)
@@ -56,7 +57,7 @@ $ sudo apt-get install gdb-multiarch
 ### Install the latest OpenOCD version from souce code
 
 1. Check if required packages are installed.
-   
+
     These packages are required by OpenOCD
     - make
     - libtool
@@ -108,7 +109,7 @@ $ make
 ```
 
 ## Flash the example:
-- in `blessed-devel/examples/radio-broadcaster`
+In `blessed-devel/examples/radio-broadcaster`
 ```
 $ chmod +x flash_openocd.sh
 $ ./flash_openocd.sh
