@@ -3,8 +3,8 @@ Table of contents
 - [Setting up Microbit Programming Environment](#setting-up-microbit-programming-environment)
   - [Before you start](#before-you-start)
   - [Setting up Eclipse IDE](#setting-up-eclipse-ide)
-    - [Installing Eclipse IDE with C/C++ Development Tools (CDT)](#installing-eclipse-ide-with-cc-development-tools-cdt)
-    - [Installing Eclipse plugins](#installing-eclipse-plugins)
+    - [Install Eclipse IDE with C/C++ Development Tools (CDT)](#install-eclipse-ide-with-cc-development-tools-cdt)
+    - [Install Eclipse plugins](#install-eclipse-plugins)
   - [Download OpenOCD and other required packages](#download-openocd-and-other-required-packages)
     - [Install required Ubuntu packages](#install-required-ubuntu-packages)
     - [Install the latest OpenOCD version from souce code](#install-the-latest-openocd-version-from-souce-code)
@@ -12,9 +12,10 @@ Table of contents
     - [Download SDK for the nRF52 SoC](#download-sdk-for-the-nrf52-soc)
     - [Add custom board header](#add-custom-board-header)
     - [Copy over example files](#copy-over-example-files)
-  - [Build the broadcaster example:](#build-the-broadcaster-example)
-  - [Flash the example:](#flash-the-example)
-  - [For debugging:](#for-debugging)
+  - [Example: radio-broadcaster](#example-radio-broadcaster)
+    - [Build the example](#build-the-example)
+    - [Flash the example](#flash-the-example)
+  - [Debugging information](#debugging-information)
 
 # Setting up Microbit Programming Environment
 
@@ -23,10 +24,10 @@ The content of this guide has been tested on Ubuntu 20.04.
 
 ## Setting up Eclipse IDE
 
-### Installing Eclipse IDE with C/C++ Development Tools (CDT)
+### Install Eclipse IDE with C/C++ Development Tools (CDT)
 Go to https://www.eclipse.org/downloads to download the latest version of Eclipse IDE. When installing, select `Eclipse IDE for C/C++ Developers`.
 
-### Installing Eclipse plugins
+### Install Eclipse plugins
 Within Eclipse IDE, go to `Help -> Install New Software`. In the drop-down menu `Work with`, select the URL that starts with CDT, then search and select the following plugins.
 
 - C/C++ GCC Cross Compiler Support
@@ -102,13 +103,14 @@ In the `nRF5_SDK_17.0.2_d674dde` directory, in subfolder `components/boards`, cr
 ### Copy over example files
 Place my modified blessed version in the project directory. The subdirectory should be called `blessed-devel`
 
-## Build the broadcaster example:
+## Example: radio-broadcaster
+### Build the example
 ```
 $ cd blessed-devel/examples/radio-broadcaster
 $ make
 ```
 
-## Flash the example:
+### Flash the example
 In `blessed-devel/examples/radio-broadcaster`
 ```
 $ chmod +x flash_openocd.sh
@@ -123,7 +125,7 @@ $ sudo ./flash_openocd.sh
 
 After successfully flashing the example to the board you should see the microbit board wirelessly, e.g., by installing the "nRF connect for Mobile" app on your smartphone.
 
-## For debugging:
+## Debugging information
 In Eclipse IDE:
 1. Import the `radio-broadcaster` example as a makefile project 
 2. Click the in menu: `Run -> Debug Configurations`
