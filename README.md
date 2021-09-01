@@ -20,7 +20,7 @@ Table of contents
 # Setting up Microbit Programming Environment
 
 ## Before you start
-The content of this guide has been tested on Ubuntu 20.04.
+The content of this guide has been tested on Ubuntu 20.04. While the guide seems long, the instructions are very detailed and I promise there will be less work to do than it seems :)
 
 ## Setting up Eclipse IDE
 
