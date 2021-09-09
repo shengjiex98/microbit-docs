@@ -20,3 +20,13 @@ A debugger interface. OpenOCD uses SWD for debugging. (The CMSIS-DAP acts as a m
 
 ## Measure power consumption
 Using the included battery pack, cut the negative wire (why negative?) and connect a resistor. Use a [picoscope](https://tech.microbit.org/hardware/edgeconnector/) to measure the voltage and current.
+
+## Slides
+
+1. What is the micro:bit board, what it has/does
+2. Set up programming environment using the Nordic SDK, using the manual
+3. How to write one simple program, compile to HEX, run it on the board
+4. Semantics
+
+## Book
+1. Chapter 2 (CODAL vs SDK)
