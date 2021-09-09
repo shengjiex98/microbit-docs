@@ -19,15 +19,16 @@ This part is fairly straightforward, and can be done on Windows, Mac or Linux th
 
 1. Install the [arm-none-eabi-gcc](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads) cross compiler. It is called a cross compiler because it runs on the x86 platform (out computer) but generate compiled code that works on ARM (micro:bit).
    1. Make sure to check `Add path to environment variable` to ensure that other programs can find the compiler.
-   2. Open Windows Powershell and type `arm-none-eabi-gcc -v` to verify that it is correctly installed.
+   2. Open Windows PowerShell and type `arm-none-eabi-gcc -v` to verify that it is correctly installed.
 2. Install [CMake](https://cmake.org/download) and [Ninja](https://ninja-build.org). These are called "make tools". Essentially, they follow instructions about how exactly how our project should be built described in a "makefile", then execute these instructions using the compiler. In theory you can also build projects manually using the compiler, without the help of any build tools, but this quickly becomes unfeasible as the project size grows.
    1. Make sure to add CMake to PATH at the end of its installation.
    2. To install Ninja, a simple solution is to copy the `ninja.exe` file to the `C:\Program Files\CMake\bin` directory (or whatever path you chose for CMake if not this default path).
+   3. Verify they are installed by running the following commands in PowerShell: `cmake --version` and `ninja --version`.
 3. Now clone the [example repository from Lancaster University](https://github.com/lancaster-university/microbit-v2-samples). 
-   1. Use [VS Code](https://code.visualstudio.com/) to open the directory we just cloned.
+   1. Use [VS Code](https://code.visualstudio.com/) to open the directory you just cloned.
    2. Click on the `CMakeLists.txt` file. A pop-up window will appear asking if you want to install an addon for CMake. Select "Yes".
    3. After installing the addon there should be a new extension for it on your side bar. Click on it and find "Configure All Projects" then select the "GCC arm-none-eabi" compiler. CMake will then automatically clone the CODAL libraries to the `library` sub directory in the project folder. This may take some time.
-   4. After configuration is finished we should have everything we need to build a simple example program and upload it onto the board. Go to `source`->`main.cpp` to take a look at the code, then click the `Build` button on the bottom status bar of VS Code.
-   5. If the build process succeeds there should be a `MICROBIT.hex` file in the project directory. Copy it onto the microbit drive and see it work! 
+   4. After configuration is finished you should have everything that you need to build a simple example program. In the project directory, take a look at `source`->`main.cpp` and it should be pretty clear what the code is doing. Click the `Build` button on the bottom status bar of VS Code.
+   5. If the build process succeeds there should be a `MICROBIT.hex` file in the project directory. Copy it onto the microbit drive and see it work!
 
 ### Setting up programming environment using the Nordic SDK
