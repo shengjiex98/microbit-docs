@@ -25,7 +25,7 @@ To run C code on the micro:bit board, we will be using the [arm-none-eabi-gcc](h
 To make the build process easier, we will need [CMake](https://cmake.org/download) and [Ninja](https://github.com/ninja-build/ninja/releases). These are called "build tools" because they automate the build process so you don't have to do some extensive setups every time you change your code. In theory you can also build projects manually using the compiler, without the help of any build tools, but this quickly becomes unfeasible as the project size grows.
 
 1. In the link for CMake, download the file `cmake-3.21.2-windows-x86_64.msi` under the "Binary distributions" section. Again the exact version number may be different.
-2. Make sure to add CMake to `PATH` at the end of its installation. ![](assets/2021-09-14%20(3).png)
+2. Make sure to select `Add CMake to the system PATH` during its installation. ![](assets/2021-09-14%20(3).png)
 3. To install Ninja, a simple solution is to download `ninja-win.zip` from the above link, then extract the `ninja.exe` file to the `C:\Program Files\CMake\bin` directory (or whatever path you chose for CMake if not this default path). ![](assets/2021-09-14%20(4).png)
 4. Verify they are installed by running the following commands in PowerShell: `cmake --version` and `ninja --version`. If any of these are not recognized, restart PowerShell and try again. ![](assets/2021-09-14%20(5).png)
 
