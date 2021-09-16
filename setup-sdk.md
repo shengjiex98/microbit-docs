@@ -6,7 +6,7 @@
   - [Things we need for compiling code](#things-we-need-for-compiling-code)
     - [Install the GCC cross compiler](#install-the-gcc-cross-compiler)
     - [Download the Nordic SDK](#download-the-nordic-sdk)
-    - [Download the *blessed* project](#download-the-blessed-project)
+    - [Download the *blessed-lab* project](#download-the-blessed-lab-project)
     - [Check that `make` is installed](#check-that-make-is-installed)
   - [Things we need for debugging](#things-we-need-for-debugging)
     - [Install OpenOCD](#install-openocd)
@@ -25,7 +25,7 @@ There will be quite a few pieces of software that you need to install in this gu
 
 - A cross compiler w/ debugger. We will continue to use the [arm-none-eabi-gcc](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads) that we used with CODAL.
 - The Nordic SDK. This is a collection of libraries—written by the manufacturer of the SoC on the micro:bit board—that enables us to utilize the ARM processor on the micro:bit board. However, the SDK has no knowledge of other components on the board.
-- A custom project called *blessed*. It it a collection of libraries specifically written for the micro:bit. For our purposes it fits a similar role as CODAL but is much less encapsulated and provides more freedom when we write our code.
+- A custom project called *blessed-lab*. It it a collection of libraries specifically written for the micro:bit. For our purposes it fits a similar role as CODAL but is much less encapsulated and provides more freedom when we write our code.
 - Build tools. We will use the Ubuntu default build tool `make`.
 
 These are all we need to write code and run it on the micro:bit board. However, to help debugging, it is helpful to set up some additional tools that enables us to debug on the board itself, check the values of the registers, and view the ARM assembly code. To do this, we additionally need:
@@ -47,18 +47,15 @@ $ sudo apt-get install gdb-multiarch
 
 ### Download the Nordic SDK
 
-Create an empty directory. This will be your project directory. Download [nRF5_SDK_17.0.2](https://www.nordicsemi.com/Software-and-tools/Software/nRF5-SDK/Download). Uncheck the checkmarks in the "SoftDevices" section so that the only item you have under "You have selected" is `nRF5_SDK_17.0.2_d674dde.zip`. Unzip and place it in a subfolder of your project directory called `nRF5_SDK_17.0.2_d674dde` (When you unzip the SDK, this folder will be created automatically)
+Create an empty directory. This will be your project directory. Download [nRF5_SDK_17.0.2](https://www.nordicsemi.com/Software-and-tools/Software/nRF5-SDK/Download). Uncheck the checkmarks in the "SoftDevices" section so that the only item you have under "You have selected" is `nRF5_SDK_17.0.2_d674dde.zip`. Unzip and place it in a subfolder of your project directory called `nRF5_SDK_17.0.2_d674dde` (When you unzip the SDK, this folder will be created automatically).
 
-We also need to put a `.h` header file specific to the micro:bit board in the SDK. In the `nRF5_SDK_17.0.2_d674dde` directory, in subfolder `components/boards`, create `custom_board.h`. Its contents are included in the end of this guide.
+### Download the *blessed-lab* project
 
-### Download the *blessed* project
-
-Download and place the *blessed-devel* folder in your project directory
+Download and place the *blessed-lab* folder in your project directory
 
 ### Check that `make` is installed
 
 Enter the following command in terminal and verify that `make` is installed.
-
 ```
 $ make --version
 ```
@@ -67,8 +64,7 @@ $ make --version
 
 ### Install OpenOCD
 
-We can install OpenOCD using `apt-get` just like the cross-compiler. Unfortunately, we need to install a newer version that is not updated in the offical `apt-get` repository yet. That requires us to download and compile the source code of OpenOCD.
-
+In an ideal world, we would install OpenOCD using `apt-get` just like the cross-compiler, and all the dependencies will be taken care of. Unfortunately, we need to install a newer version that is not updated in the offical `apt-get` repository yet. That requires us to download and compile the source code of OpenOCD.
 
 1. Check if required packages are installed. The `>=` sign means the package version number should be equal to or greater than the version number indicated after the sign.
     - `make`
@@ -125,10 +121,10 @@ We can install OpenOCD using `apt-get` just like the cross-compiler. Unfortunate
 
 ## Run an example
 
-Open a terminal window and navigate to `[your_project_dir]/blessed-devel/examples/microbit_leds`. Then build the project.
+Open a terminal window and navigate to `[your_project_dir]/blessed-lab/examples/microbit_leds`. Then build the project.
 
 ```
-$ cd blessed-devel/examples/radio-broadcaster
+$ cd blessed-lab/examples/radio-broadcaster
 $ make
 ```
 
@@ -152,12 +148,12 @@ In Eclipse IDE:
 1. Import the `microbit_leds` example as a makefile project 
 2. Click in menu: `Run -> Debug Configurations`
 3. Create a new `GDB Openocd Debugging` configuration
-   1. in the "Main" tab, set "C/C++ Application" to `[PROJECTDIR]/blessed-devel/examples/microbit_leds/build/timing-example.out` (replace `[PROJECTDIR]` by an absolute path to your project). Click "Apply".
+   1. in the "Main" tab, set "C/C++ Application" to `[PROJECTDIR]/blessed-lab/examples/microbit_leds/build/timing-example.out` (replace `[PROJECTDIR]` by an absolute path to your project). Click "Apply".
    2. in the "Debugger" tab, set the executable path to `/usr/local/bin/openocd` and the actual executable to `/usr/local/bin/openocd`.
    3. in the "Config options" of the "Debugger" tab, insert `-f interface/cmsis-dap.cfg -f target/nrf52.cfg`
    4. under "GDB client setup", set "Executable name" and "Actual executable" both to `/usr/bin/gdb-multiarch`. Click "Apply"
 4. Click "Debug"
-   1. To view compiled assembly code, click in menu `Window -> Show -> Disassembly`.
+   1. To view compiled assembly code, click in menu `Window -> Show View -> Disassembly`.
 
 ## Appendix
 
