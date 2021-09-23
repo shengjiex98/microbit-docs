@@ -12,7 +12,7 @@
     - [Install OpenOCD](#install-openocd)
     - [Install Eclipse IDE](#install-eclipse-ide)
   - [Run an example](#run-an-example)
-  - [Debugging information](#debugging-information)
+  - [Run the example in Eclipse](#run-the-example-in-eclipse)
 
 ## Before you start
 
@@ -120,14 +120,14 @@ In an ideal world, we would install OpenOCD using `apt-get` just like the cross-
 
 ## Run an example
 
-Open a terminal window and navigate to `[your_project_dir]/blessed-lab/examples/microbit_leds`. Then build the project.
+Open a terminal window and navigate to `[your_project_dir]/microbit_lab/exercises/lab4_and_lab5`. Then build the project by running `make`:
 
 ```
-$ cd blessed-lab/examples/radio-broadcaster
+$ cd microbit_lab/exercises/lab4_and_lab5
 $ make
 ```
 
-There should now be a `timing-example.hex` file in the `build` subfolder. You can manually copy it to the micro:bit drive, or use the OpenOCD interface:
+There should now be a `lab4.hex` file in the `build` subfolder. You can manually copy it to the microbit drive, or use the OpenOCD interface:
 
 ```
 $ chmod +x flash_openocd.sh
@@ -142,14 +142,9 @@ and see if it works. If this succeeds, there's a permission issue with the OpenO
 
 You should now be able to see the LEDs on board blinking.
 
-## Debugging information
-In Eclipse IDE:
-1. Import the `microbit_leds` example as a makefile project 
-2. Click in menu: `Run -> Debug Configurations`
-3. Create a new `GDB Openocd Debugging` configuration
-   1. in the "Main" tab, set "C/C++ Application" to `[PROJECTDIR]/blessed-lab/examples/microbit_leds/build/timing-example.out` (replace `[PROJECTDIR]` by an absolute path to your project). Click "Apply".
-   2. in the "Debugger" tab, set the executable path to `/usr/local/bin/openocd` and the actual executable to `/usr/local/bin/openocd`.
-   3. in the "Config options" of the "Debugger" tab, insert `-f interface/cmsis-dap.cfg -f target/nrf52.cfg`
-   4. under "GDB client setup", set "Executable name" and "Actual executable" both to `/usr/bin/gdb-multiarch`. Click "Apply"
-4. Click "Debug"
-   1. To view compiled assembly code, click in menu `Window -> Show View -> Disassembly`.
+## Run the example in Eclipse
+1. Open Eclipse IDE. Select "File" -> "Import", then under "General", select "Import Existing Projects into Workspace". Click "Next". ![](asse/../assets/sdk/eclipse2.png)
+2. Select the `microbit-lab` folder. Check "Search for nested projects". The lab projects should appear. Select all of them and click "Finish". ![](assets/sdk/eclipse4.png) 
+3. Select "File" -> "Import" again. This time under "Run/Debug", select "Launch Configurations". ![](assets/sdk/eclipse5.png)
+4. Select `microbit-lab/launch-config` folder. Click "Next", and import all configuration files. ![](assets/sdk/eclipse6.png) ![](assets/sdk/eclipse7.png)
+5. Click in the menu "Run" -> "Debug Configurations". Under "GDB OpenOCD Debugging" there should be two configurations. Select `lab4_and_lab5 Default` and click "Debug". You are now debugging the code directly on the microbit board! ![](assets/sdk/eclipse8.png)

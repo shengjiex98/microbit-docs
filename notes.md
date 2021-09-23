@@ -30,3 +30,20 @@ Using the included battery pack, cut the negative wire (why negative?) and conne
 
 ## Book
 1. Chapter 2 (CODAL vs SDK)
+
+
+## Appendix: debugging information
+*Note: this should have been done for you. In case something goes wrong, refer the the steps below to configure Build and Debug procedures.*
+
+In Eclipse IDE:
+1. Import the `lab4_and_lab5` example as a makefile project
+2. Right-click on the project folder on the left sidebar and click "Properties".
+   1. in the "C/C++ Build" tab, uncheck "Use default build command". Then set "Build command" to `make`.
+3. Click in menu: "Run" -> "Debug Configurations"
+4. Create a new "GDB Openocd Debugging" configuration
+   1. in the "Main" tab, set "C/C++ Application" to `[PROJECTDIR]/blessed-lab/examples/microbit_leds/build/timing-example.out` (replace `[PROJECTDIR]` by an absolute path to your project). Click "Apply".
+   2. in the "Debugger" tab, set the executable path to `/usr/local/bin/openocd` and the actual executable to `/usr/local/bin/openocd`.
+   3. in the "Config options" of the "Debugger" tab, insert `-f interface/cmsis-dap.cfg -f target/nrf52.cfg`
+   4. under "GDB client setup", set "Executable name" and "Actual executable" both to `/usr/bin/gdb-multiarch`. Click "Apply"
+5. Click "Debug"
+   1. To view compiled assembly code, click in menu "Window" -> "Show View" -> "Disassembly".
