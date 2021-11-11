@@ -12,8 +12,6 @@
 
 CODAL (*Component Oriented Device Abstraction Layer*) is the runtime environment developed for microbit. It provides high level abstractions for the board and hides the implementation details. 
 
-In this section we will set up the environment for programming microbit with CODAL and run a simple example. While the main purpose of this section is to provide a comparison point to our next step with SDK, at the end of this section you will have everything that you need to write CODAL-based programs. So feel free to play with it if you want!
-
 *Note: Although this guide is written for Windows, feel free to use macOS or Linux if you are comfortable. You can skip installing "Ninja" if you are not using Windows, and install the rest of the software outlined below.*
 
 ## Install the cross compiler
