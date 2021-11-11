@@ -17,4 +17,4 @@ Please follow [this link](setup-codal.md) for setting up CODAL and run a simple 
 
 ## Program microbit with Nordic SDK
 
-This section is where the majority of exercises will be. Please follow [this link]() to set up the lab repository. It comes with 6 programming exercises, and you can find correspoinding slides in [here](/lab-slides).
+This section is where the majority of exercises will be. Please follow [this link]() to set up the lab repository. It comes with 6 programming exercises, and you can find correspoinding slides in [here](/lab-slides). Enjoy!
