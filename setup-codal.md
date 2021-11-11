@@ -1,6 +1,6 @@
-# Setting up CODAL programming environment (on Windows)
+# Setting up CODAL programming environment
 
-- [Setting up CODAL programming environment (on Windows)](#setting-up-codal-programming-environment-on-windows)
+- [Setting up CODAL programming environment](#setting-up-codal-programming-environment)
   - [Overview](#overview)
   - [Install the cross compiler](#install-the-cross-compiler)
   - [Install build tools](#install-build-tools)
@@ -10,7 +10,11 @@
 
 <img src="assets/codal.png" alt="Software stack on micro:bit V2" width="450"/>
 
-This part is fairly straightforward thanks to the chip on micro:bit that specifically handles the interface between your computer and the board. With this chip, micro:bit appears as a standard flash drive on you computer and uploading a compiled program is as simple as copying the `.hex` file onto that drive.
+CODAL (*Component Oriented Device Abstraction Layer*) is the runtime environment developed for microbit. It provides high level abstractions for the board and hides the implementation details. 
+
+In this section we will set up the environment for programming microbit with CODAL and run a simple example. While the main purpose of this section is to provide a comparison point to our next step with SDK, at the end of this section you will have everything that you need to write CODAL-based programs. So feel free to play with it if you want!
+
+*Note: Although this guide is written for Windows, feel free to use macOS or Linux if you are comfortable. You can skip installing "Ninja" if you are not using Windows, and install the rest of the software outlined below.*
 
 ## Install the cross compiler
 
@@ -38,4 +42,6 @@ Finally we will need to download the CODAL library as well as some example files
 4. Click on the `CMakeLists.txt` file. A pop-up window will appear asking if you want to install an addon for CMake. Select "Yes". ![](assets/codal/2021-09-14%20(6).png)
 5. After installing the addon there should be a new extension for it on your side bar. Click on it and find "Configure All Projects" then select the `GCC arm-none-eabi` compiler. CMake will then automatically clone the CODAL libraries to the `library` sub directory in the project folder. This may take some time. If you can't find the `GCC arm-none-eabi` compiler, restart VS Code and try again. ![](assets/codal/2021-09-14%20(13).png)
 6. After configuration is finished you should have everything that you need to build a simple example program. In the project directory, take a look at `source`->`main.cpp` and it should be pretty clear what the code is doing. Click the `Build` button on the bottom status bar of VS Code. ![](assets/codal/2021-09-14%20(14).png)
-7. If the build process succeeds there should be a `MICROBIT.hex` file in the project directory. Copy it onto the micro:bit drive and see it work. You have now successfully set up the environment for working with CODAL! :)
+7. If the build process succeeds there should be a `MICROBIT.hex` file in the project directory. Copy it onto the micro:bit drive and see it work. You have now successfully set up the environment for working with CODAL!
+
+*Note: The last part (copying the `.hex` file directly to the board) is fairly straightforward thanks to the chip on micro:bit that specifically handles the interface between your computer and the board. With this chip, micro:bit appears as a standard flash drive on you computer and uploading a compiled program is as simple as copying the `.hex` file onto that drive.*
