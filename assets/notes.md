@@ -1,5 +1,29 @@
 # Notes for micro:bit development
 
+## Arch Linux
+### arm-none-eabi
+`arm-none-eabi-gcc` might throw:
+```
+/usr/lib/gcc/arm-none-eabi/11.2.0/include/stdint.h:9:26: fatal error: stdint.h: No such file or directory
+ # include_next <stdint.h>
+```
+
+This is because there's no other `stdint.h` file on the computer. In this case, install the `arm-none-eabi-newlib` package:
+
+```
+$ sudo pacman -S arm-none-eabi-newlib
+```
+
+### gcc-multiarch
+...is not available as a official repo package. Use the AUR package [gdb-multiarch](https://aur.archlinux.org/packages/gdb-multiarch/)
+
+### OpenOCD
+... is much easier to install on Arch. Simply run
+```
+$ sudo pacman -S openocd
+```
+
+
 ## Write C and compile it to assembly
 1. [Nordic nRF52833 SoC](https://infocenter.nordicsemi.com/index.jsp?topic=%2Fps_nrf52833%2Fkeyfeatures_html5.html) with ARM Cortex M4
 2. Develop use [Nordic SDK](https://www.nordicsemi.com/Products/Development-software/nrf5-sdk/download) (which is essentially a collection of C libraries)
